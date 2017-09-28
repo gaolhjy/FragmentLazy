@@ -6,8 +6,9 @@
 ### 4.如何实现赖加载(只加载当前界面)?
 ### 5.baseFragment的封装
 
-## 详情见博客
-=======
+## 直接可使用的代码
+- [代码链接](https://github.com/gaolh89/FragmentLazy/blob/master/app/src/main/java/com/glh/fragmentlazy/lazyFragment/BaseLazyFragment1.java)
+
 ## 详情见博客 
 - [博客链接](http://blog.csdn.net/gaolh89/article/details/78012128)
 ## 致谢:
