@@ -13,7 +13,7 @@ import android.view.ViewGroup;
  * <pre>
  *     author : 高磊华
  *     e-mail : 984992087@qq.com
- *     time   :2016/09/16
+ *     time   :2017/09/28
  *     desc   :  集成到真实项目中,涉及  isFirstLoad 的不需要.代码如下
  * </pre>
  */
