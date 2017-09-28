@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,19 +14,16 @@ import android.view.ViewGroup;
  *     author : 高磊华
  *     e-mail : 984992087@qq.com
  *     time   :2016/09/16
- *     desc   : 赖加载情况下fragment的基类(用于分析过程所有.)
- *              集成到真实项目中,涉及  isFirstLoad 的不需要.具体见BaseLazyFragment1
+ *     desc   :  集成到真实项目中,涉及  isFirstLoad 的不需要.代码如下
  * </pre>
  */
 
 
-public abstract class BaseLazyFragment extends Fragment {
-
-    private static String TAG = "赖加载基类========>";
+public abstract class BaseLazyFragment1 extends Fragment {
 
     private boolean isVisible   = false;//当前Fragment是否可见
     private boolean isInitView  = false;//是否与View建立起映射关系
-    private boolean isFirstLoad = true;//是否是第一次加载数据
+
 
     private View              convertView;
     private SparseArray<View> mViews;
@@ -56,8 +52,7 @@ public abstract class BaseLazyFragment extends Fragment {
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        Log.e(TAG, "setUserVisibleHint: " + isVisibleToUser + ".............." + this.getClass()
-                .getSimpleName());
+
         if (isVisibleToUser) {
             isVisible = true;
             lazyLoadData();
@@ -69,20 +64,12 @@ public abstract class BaseLazyFragment extends Fragment {
     }
 
     private void lazyLoadData() {
-        if (isFirstLoad) {
-            Log.e(TAG, "第一次加载 " + " isInitView:" + isInitView + ".............." + "isVisible:" + isVisible + ".............." + this.getClass().getSimpleName());
-        } else {
-            Log.e(TAG, "不是第一次加载 " + " isInitView:" + isInitView
-                    + ".............." + "isVisible:" + isVisible + ".............." + this.getClass().getSimpleName());
-        }
-        if (!isFirstLoad || !isVisible || !isInitView) {
-            Log.e(TAG, "不加载" + ".............." + this.getClass().getSimpleName());
+
+        if (!isVisible || !isInitView) {
             return;
         }
 
-        Log.e(TAG, "完成数据第一次加载" + ".............." + this.getClass().getSimpleName());
         initData();
-        isFirstLoad = false;
     }
 
     /**
